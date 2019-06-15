@@ -128,18 +128,21 @@ img.icons {
     content: ' \25CF';
     font-size: 60px;
     color: lawngreen;
+    line-height: 15px;
 }
 
 .circle-yellow:before {
     content: ' \25CF';
     font-size: 60px;
     color: yellow;
+    line-height: 15px;
 }
 
 .circle-red:before {
     content: ' \25CF';
     font-size: 60px;
     color: red;
+    line-height: 15px;
 }
 
 

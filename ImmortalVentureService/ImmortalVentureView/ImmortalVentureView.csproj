@@ -151,6 +151,9 @@
     <Content Include="Images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\testing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -183,6 +186,8 @@
     <Content Include="Views\Home\MedicalView.cshtml" />
     <Content Include="Views\Home\SuperviserDoctor.cshtml" />
     <Content Include="Views\Home\SuperviserDriver.cshtml" />
+    <Content Include="Views\Home\Driver.cshtml" />
+    <Content Include="Views\Home\Testing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,5 +27,15 @@ namespace ImmortalVentureView.Controllers
         {
             return View();
         }
+
+        public ActionResult Driver()
+        {
+            return View();
+        }
+
+        public ActionResult Testing()
+        {
+            return View();
+        }
     }
 }
