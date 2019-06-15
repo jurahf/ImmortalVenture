@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HakatonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HakatonModelStoreContainer">
+    <EntitySet Name="ПользовательSet" EntityType="HakatonModel.Store.ПользовательSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="МедосмотрСВрачомSet" EntityType="HakatonModel.Store.МедосмотрСВрачомSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="МедосмотрАвтоматическийSet" EntityType="HakatonModel.Store.МедосмотрАвтоматическийSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ВодительSet" EntityType="HakatonModel.Store.ВодительSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ВрачSet" EntityType="HakatonModel.Store.ВрачSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ПользовательВрач" Association="HakatonModel.Store.ПользовательВрач">
+      <End Role="Пользователь" EntitySet="ПользовательSet" />
+      <End Role="Врач" EntitySet="ВрачSet" />
+    </AssociationSet>
+    <AssociationSet Name="ПользовательВодитель" Association="HakatonModel.Store.ПользовательВодитель">
+      <End Role="Пользователь" EntitySet="ПользовательSet" />
+      <End Role="Водитель" EntitySet="ВодительSet" />
+    </AssociationSet>
+    <AssociationSet Name="ВодительМедосмотрАвтоматический" Association="HakatonModel.Store.ВодительМедосмотрАвтоматический">
+      <End Role="Водитель" EntitySet="ВодительSet" />
+      <End Role="МедосмотрАвтоматический" EntitySet="МедосмотрАвтоматическийSet" />
+    </AssociationSet>
+    <AssociationSet Name="ВодительМедосмотрСВрачом" Association="HakatonModel.Store.ВодительМедосмотрСВрачом">
+      <End Role="Водитель" EntitySet="ВодительSet" />
+      <End Role="МедосмотрСВрачом" EntitySet="МедосмотрСВрачомSet" />
+    </AssociationSet>
+    <AssociationSet Name="ВрачМедосмотрСВрачом" Association="HakatonModel.Store.ВрачМедосмотрСВрачом">
+      <End Role="Врач" EntitySet="ВрачSet" />
+      <End Role="МедосмотрСВрачом" EntitySet="МедосмотрСВрачомSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ПользовательSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ФИО" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Логин" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ХэшПароля" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ЭП" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="МедосмотрСВрачомSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Дата" Type="datetime" Nullable="false" />
+    <Property Name="Жалобы" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ВизуальныйОсмотр" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Температура" Type="decimal" Nullable="false" />
+    <Property Name="ДавлениеВерхнее" Type="int" Nullable="false" />
+    <Property Name="ДавлениеНижнее" Type="int" Nullable="false" />
+    <Property Name="Пульс" Type="int" Nullable="false" />
+    <Property Name="ОпьянениеПромилле" Type="decimal" Nullable="false" />
+    <Property Name="Заключение" Type="int" Nullable="false" />
+    <Property Name="Комментарий" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Водитель_Id" Type="int" Nullable="false" />
+    <Property Name="Врач_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="МедосмотрАвтоматическийSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Дата" Type="datetime" Nullable="false" />
+    <Property Name="Температура" Type="decimal" Nullable="true" />
+    <Property Name="ДавлениеВерхнее" Type="int" Nullable="true" />
+    <Property Name="ДавлениеНижнее" Type="int" Nullable="true" />
+    <Property Name="Пульс" Type="int" Nullable="true" />
+    <Property Name="ОпьянениеПромилле" Type="decimal" Nullable="true" />
+    <Property Name="Заключение" Type="int" Nullable="false" />
+    <Property Name="Водитель_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ВодительSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ДатаРождения" Type="datetime" Nullable="false" />
+    <Property Name="Пол" Type="int" Nullable="false" />
+    <Property Name="ВнешнийХэш" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Пользователь_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ВрачSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ВнешнийХэш" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Пользователь_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ПользовательВрач">
+    <End Role="Пользователь" Type="HakatonModel.Store.ПользовательSet" Multiplicity="1" />
+    <End Role="Врач" Type="HakatonModel.Store.ВрачSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователь">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Врач">
+        <PropertyRef Name="Пользователь_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ПользовательВодитель">
+    <End Role="Пользователь" Type="HakatonModel.Store.ПользовательSet" Multiplicity="1" />
+    <End Role="Водитель" Type="HakatonModel.Store.ВодительSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователь">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Водитель">
+        <PropertyRef Name="Пользователь_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ВодительМедосмотрАвтоматический">
+    <End Role="Водитель" Type="HakatonModel.Store.ВодительSet" Multiplicity="1" />
+    <End Role="МедосмотрАвтоматический" Type="HakatonModel.Store.МедосмотрАвтоматическийSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Водитель">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="МедосмотрАвтоматический">
+        <PropertyRef Name="Водитель_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ВодительМедосмотрСВрачом">
+    <End Role="Водитель" Type="HakatonModel.Store.ВодительSet" Multiplicity="1" />
+    <End Role="МедосмотрСВрачом" Type="HakatonModel.Store.МедосмотрСВрачомSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Водитель">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="МедосмотрСВрачом">
+        <PropertyRef Name="Водитель_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ВрачМедосмотрСВрачом">
+    <End Role="Врач" Type="HakatonModel.Store.ВрачSet" Multiplicity="1" />
+    <End Role="МедосмотрСВрачом" Type="HakatonModel.Store.МедосмотрСВрачомSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Врач">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="МедосмотрСВрачом">
+        <PropertyRef Name="Врач_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="HakatonModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="HakatonModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ПользовательSet" EntityType="HakatonModel.Пользователь" />
+          <EntitySet Name="МедосмотрСВрачомSet" EntityType="HakatonModel.МедосмотрСВрачом" />
+          <EntitySet Name="МедосмотрАвтоматическийSet" EntityType="HakatonModel.МедосмотрАвтоматический" />
+          <EntitySet Name="ВодительSet" EntityType="HakatonModel.Водитель" />
+          <EntitySet Name="ВрачSet" EntityType="HakatonModel.Врач" />
+          <AssociationSet Name="ПользовательВрач" Association="HakatonModel.ПользовательВрач">
+            <End Role="Пользователь" EntitySet="ПользовательSet" />
+            <End Role="Врач" EntitySet="ВрачSet" />
+          </AssociationSet>
+          <AssociationSet Name="ПользовательВодитель" Association="HakatonModel.ПользовательВодитель">
+            <End Role="Пользователь" EntitySet="ПользовательSet" />
+            <End Role="Водитель" EntitySet="ВодительSet" />
+          </AssociationSet>
+          <AssociationSet Name="ВодительМедосмотрАвтоматический" Association="HakatonModel.ВодительМедосмотрАвтоматический">
+            <End Role="Водитель" EntitySet="ВодительSet" />
+            <End Role="МедосмотрАвтоматический" EntitySet="МедосмотрАвтоматическийSet" />
+          </AssociationSet>
+          <AssociationSet Name="ВодительМедосмотрСВрачом" Association="HakatonModel.ВодительМедосмотрСВрачом">
+            <End Role="Водитель" EntitySet="ВодительSet" />
+            <End Role="МедосмотрСВрачом" EntitySet="МедосмотрСВрачомSet" />
+          </AssociationSet>
+          <AssociationSet Name="ВрачМедосмотрСВрачом" Association="HakatonModel.ВрачМедосмотрСВрачом">
+            <End Role="Врач" EntitySet="ВрачSet" />
+            <End Role="МедосмотрСВрачом" EntitySet="МедосмотрСВрачомSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Пользователь">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО" Type="String" Nullable="false" />
+          <Property Name="Логин" Type="String" Nullable="false" />
+          <Property Name="ХэшПароля" Type="String" Nullable="false" />
+          <Property Name="ЭП" Type="String" Nullable="true" />
+          <NavigationProperty Name="Врач" Relationship="HakatonModel.ПользовательВрач" FromRole="Пользователь" ToRole="Врач" />
+          <NavigationProperty Name="Водитель" Relationship="HakatonModel.ПользовательВодитель" FromRole="Пользователь" ToRole="Водитель" />
+        </EntityType>
+        <EntityType Name="Врач">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ВнешнийХэш" Type="String" Nullable="false" />
+          <NavigationProperty Name="Пользователь" Relationship="HakatonModel.ПользовательВрач" FromRole="Врач" ToRole="Пользователь" />
+          <NavigationProperty Name="МедосмотрСВрачом" Relationship="HakatonModel.ВрачМедосмотрСВрачом" FromRole="Врач" ToRole="МедосмотрСВрачом" />
+        </EntityType>
+        <EntityType Name="Водитель">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ДатаРождения" Type="DateTime" Nullable="false" />
+          <Property Name="Пол" Type="HakatonModel.Пол" Nullable="false" />
+          <Property Name="ВнешнийХэш" Type="String" Nullable="false" />
+          <NavigationProperty Name="Пользователь" Relationship="HakatonModel.ПользовательВодитель" FromRole="Водитель" ToRole="Пользователь" />
+          <NavigationProperty Name="МедосмотрАвтоматический" Relationship="HakatonModel.ВодительМедосмотрАвтоматический" FromRole="Водитель" ToRole="МедосмотрАвтоматический" />
+          <NavigationProperty Name="МедосмотрСВрачом" Relationship="HakatonModel.ВодительМедосмотрСВрачом" FromRole="Водитель" ToRole="МедосмотрСВрачом" />
+        </EntityType>
+        <EnumType Name="Пол">
+          <Member Name="Муж" />
+          <Member Name="Жен" />
+        </EnumType>
+        <EntityType Name="МедосмотрСВрачом">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Водитель" Relationship="HakatonModel.ВодительМедосмотрСВрачом" FromRole="МедосмотрСВрачом" ToRole="Водитель" />
+          <NavigationProperty Name="Врач" Relationship="HakatonModel.ВрачМедосмотрСВрачом" FromRole="МедосмотрСВрачом" ToRole="Врач" />
+          <Property Name="Дата" Type="DateTime" Nullable="false" />
+          <Property Name="Жалобы" Type="String" Nullable="false" />
+          <Property Name="ВизуальныйОсмотр" Type="String" Nullable="false" />
+          <Property Name="Температура" Type="Decimal" Nullable="false" />
+          <Property Name="ДавлениеВерхнее" Type="Int32" Nullable="false" />
+          <Property Name="ДавлениеНижнее" Type="Int32" Nullable="false" />
+          <Property Name="Пульс" Type="Int32" Nullable="false" />
+          <Property Name="ОпьянениеПромилле" Type="Decimal" Nullable="false" />
+          <Property Name="Заключение" Type="HakatonModel.Заключение" Nullable="false" />
+          <Property Name="Комментарий" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="МедосмотрАвтоматический">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Водитель" Relationship="HakatonModel.ВодительМедосмотрАвтоматический" FromRole="МедосмотрАвтоматический" ToRole="Водитель" />
+          <Property Name="Дата" Type="DateTime" Nullable="false" />
+          <Property Name="Температура" Type="Decimal" Nullable="true" />
+          <Property Name="ДавлениеВерхнее" Type="Int32" Nullable="true" />
+          <Property Name="ДавлениеНижнее" Type="Int32" Nullable="true" />
+          <Property Name="Пульс" Type="Int32" Nullable="true" />
+          <Property Name="ОпьянениеПромилле" Type="Decimal" Nullable="true" />
+          <Property Name="Заключение" Type="HakatonModel.Заключение" Nullable="false" />
+        </EntityType>
+        <Association Name="ПользовательВрач">
+          <End Type="HakatonModel.Пользователь" Role="Пользователь" Multiplicity="1" />
+          <End Type="HakatonModel.Врач" Role="Врач" Multiplicity="*" />
+        </Association>
+        <Association Name="ПользовательВодитель">
+          <End Type="HakatonModel.Пользователь" Role="Пользователь" Multiplicity="1" />
+          <End Type="HakatonModel.Водитель" Role="Водитель" Multiplicity="*" />
+        </Association>
+        <Association Name="ВодительМедосмотрАвтоматический">
+          <End Type="HakatonModel.Водитель" Role="Водитель" Multiplicity="1" />
+          <End Type="HakatonModel.МедосмотрАвтоматический" Role="МедосмотрАвтоматический" Multiplicity="*" />
+        </Association>
+        <Association Name="ВодительМедосмотрСВрачом">
+          <End Type="HakatonModel.Водитель" Role="Водитель" Multiplicity="1" />
+          <End Type="HakatonModel.МедосмотрСВрачом" Role="МедосмотрСВрачом" Multiplicity="*" />
+        </Association>
+        <Association Name="ВрачМедосмотрСВрачом">
+          <End Type="HakatonModel.Врач" Role="Врач" Multiplicity="1" />
+          <End Type="HakatonModel.МедосмотрСВрачом" Role="МедосмотрСВрачом" Multiplicity="*" />
+        </Association>
+        <EnumType Name="Заключение">
+          <Member Name="Красный" />
+          <Member Name="Желтый" />
+          <Member Name="Зеленый" />
+        </EnumType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HakatonModelStoreContainer" CdmEntityContainer="HakatonModelContainer">
+    <EntitySetMapping Name="ПользовательSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HakatonModel.Пользователь)">
+        <MappingFragment StoreEntitySet="ПользовательSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="ХэшПароля" ColumnName="ХэшПароля" />
+          <ScalarProperty Name="ЭП" ColumnName="ЭП" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="МедосмотрСВрачомSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HakatonModel.МедосмотрСВрачом)">
+        <MappingFragment StoreEntitySet="МедосмотрСВрачомSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Жалобы" ColumnName="Жалобы" />
+          <ScalarProperty Name="ВизуальныйОсмотр" ColumnName="ВизуальныйОсмотр" />
+          <ScalarProperty Name="Температура" ColumnName="Температура" />
+          <ScalarProperty Name="ДавлениеВерхнее" ColumnName="ДавлениеВерхнее" />
+          <ScalarProperty Name="ДавлениеНижнее" ColumnName="ДавлениеНижнее" />
+          <ScalarProperty Name="Пульс" ColumnName="Пульс" />
+          <ScalarProperty Name="ОпьянениеПромилле" ColumnName="ОпьянениеПромилле" />
+          <ScalarProperty Name="Заключение" ColumnName="Заключение" />
+          <ScalarProperty Name="Комментарий" ColumnName="Комментарий" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="МедосмотрАвтоматическийSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HakatonModel.МедосмотрАвтоматический)">
+        <MappingFragment StoreEntitySet="МедосмотрАвтоматическийSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Температура" ColumnName="Температура" />
+          <ScalarProperty Name="ДавлениеВерхнее" ColumnName="ДавлениеВерхнее" />
+          <ScalarProperty Name="ДавлениеНижнее" ColumnName="ДавлениеНижнее" />
+          <ScalarProperty Name="Пульс" ColumnName="Пульс" />
+          <ScalarProperty Name="ОпьянениеПромилле" ColumnName="ОпьянениеПромилле" />
+          <ScalarProperty Name="Заключение" ColumnName="Заключение" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ВодительSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HakatonModel.Водитель)">
+        <MappingFragment StoreEntitySet="ВодительSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ДатаРождения" ColumnName="ДатаРождения" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="ВнешнийХэш" ColumnName="ВнешнийХэш" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ВрачSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HakatonModel.Врач)">
+        <MappingFragment StoreEntitySet="ВрачSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ВнешнийХэш" ColumnName="ВнешнийХэш" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ПользовательВрач" TypeName="HakatonModel.ПользовательВрач" StoreEntitySet="ВрачSet">
+      <EndProperty Name="Пользователь">
+        <ScalarProperty Name="Id" ColumnName="Пользователь_Id" />
+      </EndProperty>
+      <EndProperty Name="Врач">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ПользовательВодитель" TypeName="HakatonModel.ПользовательВодитель" StoreEntitySet="ВодительSet">
+      <EndProperty Name="Пользователь">
+        <ScalarProperty Name="Id" ColumnName="Пользователь_Id" />
+      </EndProperty>
+      <EndProperty Name="Водитель">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ВодительМедосмотрАвтоматический" TypeName="HakatonModel.ВодительМедосмотрАвтоматический" StoreEntitySet="МедосмотрАвтоматическийSet">
+      <EndProperty Name="Водитель">
+        <ScalarProperty Name="Id" ColumnName="Водитель_Id" />
+      </EndProperty>
+      <EndProperty Name="МедосмотрАвтоматический">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ВодительМедосмотрСВрачом" TypeName="HakatonModel.ВодительМедосмотрСВрачом" StoreEntitySet="МедосмотрСВрачомSet">
+      <EndProperty Name="Водитель">
+        <ScalarProperty Name="Id" ColumnName="Водитель_Id" />
+      </EndProperty>
+      <EndProperty Name="МедосмотрСВрачом">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ВрачМедосмотрСВрачом" TypeName="HakatonModel.ВрачМедосмотрСВрачом" StoreEntitySet="МедосмотрСВрачомSet">
+      <EndProperty Name="Врач">
+        <ScalarProperty Name="Id" ColumnName="Врач_Id" />
+      </EndProperty>
+      <EndProperty Name="МедосмотрСВрачом">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

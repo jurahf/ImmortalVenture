@@ -56,6 +56,8 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -88,6 +90,17 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Model\HakatonModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HakatonModel.Context.cs</LastGenOutput>
+      <DependentUpon>HakatonModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\HakatonModel.edmx.sql" />
+    <Content Include="Model\HakatonModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HakatonModel.cs</LastGenOutput>
+      <DependentUpon>HakatonModel.edmx</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -96,16 +109,66 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\HakatonModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HakatonModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HakatonModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HakatonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HakatonModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HakatonModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Водитель.cs">
+      <DependentUpon>HakatonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Врач.cs">
+      <DependentUpon>HakatonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Заключение.cs">
+      <DependentUpon>HakatonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\МедосмотрАвтоматический.cs">
+      <DependentUpon>HakatonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\МедосмотрСВрачом.cs">
+      <DependentUpon>HakatonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Пол.cs">
+      <DependentUpon>HakatonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Пользователь.cs">
+      <DependentUpon>HakatonModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Model\HakatonModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HakatonModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\HakatonModel.edmx.diagram">
+      <DependentUpon>HakatonModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\ImmortalVentureService - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
