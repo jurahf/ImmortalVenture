@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImmortalVentureService", "ImmortalVentureService\ImmortalVentureService.csproj", "{684FF6FA-4DD0-4B75-9018-6E70B39EC972}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImmortalVentureView", "ImmortalVentureView\ImmortalVentureView.csproj", "{CBC7ACC7-C638-4346-AEB3-8A0699C1400B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{684FF6FA-4DD0-4B75-9018-6E70B39EC972}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{684FF6FA-4DD0-4B75-9018-6E70B39EC972}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{684FF6FA-4DD0-4B75-9018-6E70B39EC972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC7ACC7-C638-4346-AEB3-8A0699C1400B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC7ACC7-C638-4346-AEB3-8A0699C1400B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC7ACC7-C638-4346-AEB3-8A0699C1400B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC7ACC7-C638-4346-AEB3-8A0699C1400B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

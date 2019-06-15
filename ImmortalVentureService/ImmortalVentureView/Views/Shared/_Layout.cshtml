@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImmortalVenture - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top my-navbar">
+
+            <div class="navbar-header">
+
+                <div class="row center-container">
+
+                    <div class="col col-xs-2">
+                        <img id="logo_header" src="~/Images/logo.png" />
+                    </div>
+
+                    <div class="col col-xs-3 center-content font-size-24 padding-top-10">
+                        <p>Федеральный портал для мониторинга медосвидетельствования водителей</p>
+                    </div>
+
+                    <div class="col col-xs-2">
+
+                    </div>
+
+                    <div class="col col-xs-5 center-content font-size-30 left">
+                        <a>Профиль</a>
+                        <a>Расписание</a>
+                        <a class="white-border">Выход</a>
+                    </div>
+                </div>
+
+                @*@Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+
+    </div>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <p>&nbsp;</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

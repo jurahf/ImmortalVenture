@@ -1,0 +1,115 @@
+﻿html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    padding-top: 200px;
+    padding-bottom: 20px;
+    background-size: 120px;
+    background-image: url('../Images/back.png');
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#logo_header {
+    height: 99px;
+    width: 99px;
+    margin-left: 48px;
+    margin-top: 31px;
+}
+
+.my-navbar {
+    background-color: #26A69A;
+    border-color: #C4C4C4;
+    height: 200px;
+    border-bottom-width: 38px;
+    color: white;
+}
+
+
+.center-container {
+    display: flex;
+}
+
+.center-content {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.navbar-header a {
+    color: white;
+    margin-right: 50px;
+}
+
+.navbar-header a:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.white-border {
+    border-width: 2px;
+    border-color: white;
+    border-style: solid;
+    padding: 10px;
+}
+
+footer {
+    background-color: #26A69A;
+    border-color: #C4C4C4;
+    height: 150px;
+    border: solid 0;
+    border-top: 38px #C4C4C4 solid;
+    color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.jumbotron {
+    border-radius: 0px !important;
+}
+
+
+
+
+
+
+
+
+
+.padding-top-10 {
+    padding-top: 10px;
+}
+
+.padding-top-30 {
+    padding-top: 30px;
+}
+
+.font-size-24 {
+    font-size: 24px;
+}
+
+.font-size-30 {
+    font-size: 30px;
+}
