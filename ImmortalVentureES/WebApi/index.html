@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <p>
+        TestController - для проверки работы сервера
+        <br /><a href="/api/test/echo?text=ping">/api/test/echo?text=ping</a>
+    </p>
+    <p>
+        ExpertSystemController - для работы с экспертными системами
+        <br /><a href="/api/expertSystem/getActualSystems">/api/expertSystem/getActualSystems</a> - получить список активных систем
+        <br /><a href="/api/expertSystem/getQueriedVariables?esName=Шашлык">/api/expertSystem/getQueriedVariables?esName=Шашлык</a> - получить список запрашиваемых переменных в определенной ЭС
+        <br /><a href="/api/expertSystem/GoConsult">/api/expertSystem/GoConsult</a> - выполнить консультацию. POST-запросом, в теле запроса надо указать систему, цель консультации и значения запрашиваемых переменных.
+        Пример:
+        <code>
+            {
+                FileName: "Шашлык.es",
+                Goal: "Действие",
+                VarValues: [
+                    { Variable: "Вид мяса", Value: "Свинина" },
+                    { Variable: "Время жарки", Value: "Ну минут 10" },
+                ]
+            }
+        </code>
+
+    </p>
+</body>
+</html>
