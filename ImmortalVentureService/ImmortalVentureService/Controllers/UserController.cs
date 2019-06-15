@@ -13,6 +13,19 @@ namespace ImmortalVentureService.Controllers
     {
         private DBWork db = new DBWork();
 
+        [HttpGet]
+        [ActionName("GetUser")]
+        public UserDto GetUser(int id)
+        {
+            var user = db.GetFromDatabase<Пользователь>(x => x.Id == id).FirstOrDefault();
+
+            if (user == null)
+                return null;
+
+            return new UserDto(user);
+        }
+
+
         [HttpPost]
         [ActionName("AddUser")]
         public int AddUser([FromBody] UserDto dto)
