@@ -3,8 +3,7 @@
 }
 
 body {
-    padding-top: 200px;
-    padding-bottom: 20px;
+    /*padding-top: 200px;*/
     background-size: 120px;
     background-image: url('../Images/back.png');
     font-family: 'Roboto', sans-serif;
@@ -23,11 +22,8 @@ body {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.btn {
+    width: 100%;
 }
 
 #logo_header {
@@ -43,6 +39,8 @@ textarea {
     height: 200px;
     border-bottom-width: 38px;
     color: white;
+    position: static;
+    margin-bottom: 0;
 }
 
 
@@ -80,14 +78,16 @@ footer {
     border: solid 0;
     border-top: 38px #C4C4C4 solid;
     color: white;
-    position: absolute;
+    position: static;
     right: 0;
     bottom: 0;
     left: 0;
+    margin-top: 0;
 }
 
 .jumbotron {
     border-radius: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 
