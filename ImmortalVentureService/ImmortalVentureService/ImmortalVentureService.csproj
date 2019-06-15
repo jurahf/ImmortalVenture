@@ -102,12 +102,17 @@
       <DependentUpon>HakatonModel.edmx</DependentUpon>
     </Content>
     <Content Include="Model\Scripts\0 - создание схемы.sql" />
+    <Content Include="Model\Scripts\1 - внешний хэш.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Classes\HashHelper.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="Controllers\ВрачController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DTO\DoctorDto.cs" />
+    <Compile Include="DTO\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
