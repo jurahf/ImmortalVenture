@@ -101,14 +101,17 @@
       <LastGenOutput>HakatonModel.cs</LastGenOutput>
       <DependentUpon>HakatonModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Model\Scripts\0 - создание схемы.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\ВрачController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\DBWork.cs" />
     <Compile Include="Model\HakatonModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -164,9 +167,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

@@ -25,6 +25,7 @@ namespace ImmortalVentureService.Model
         public decimal ОпьянениеПромилле { get; set; }
         public Заключение Заключение { get; set; }
         public string Комментарий { get; set; }
+        public string ВнешнийХэш { get; set; }
     
         public virtual Водитель Водитель { get; set; }
         public virtual Врач Врач { get; set; }

@@ -57,6 +57,7 @@
     <Property Name="ОпьянениеПромилле" Type="decimal" Nullable="false" />
     <Property Name="Заключение" Type="int" Nullable="false" />
     <Property Name="Комментарий" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ВнешнийХэш" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Водитель_Id" Type="int" Nullable="false" />
     <Property Name="Врач_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -72,6 +73,7 @@
     <Property Name="Пульс" Type="int" Nullable="true" />
     <Property Name="ОпьянениеПромилле" Type="decimal" Nullable="true" />
     <Property Name="Заключение" Type="int" Nullable="false" />
+    <Property Name="ВнешнийХэш" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Водитель_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ВодительSet">
@@ -81,7 +83,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ДатаРождения" Type="datetime" Nullable="false" />
     <Property Name="Пол" Type="int" Nullable="false" />
-    <Property Name="ВнешнийХэш" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ВнешнийХэш" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Пользователь_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ВрачSet">
@@ -89,7 +91,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ВнешнийХэш" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ВнешнийХэш" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Пользователь_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ПользовательВрач">
@@ -200,7 +202,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ВнешнийХэш" Type="String" Nullable="false" />
+          <Property Name="ВнешнийХэш" Type="String" Nullable="true" />
           <NavigationProperty Name="Пользователь" Relationship="HakatonModel.ПользовательВрач" FromRole="Врач" ToRole="Пользователь" />
           <NavigationProperty Name="МедосмотрСВрачом" Relationship="HakatonModel.ВрачМедосмотрСВрачом" FromRole="Врач" ToRole="МедосмотрСВрачом" />
         </EntityType>
@@ -211,7 +213,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ДатаРождения" Type="DateTime" Nullable="false" />
           <Property Name="Пол" Type="HakatonModel.Пол" Nullable="false" />
-          <Property Name="ВнешнийХэш" Type="String" Nullable="false" />
+          <Property Name="ВнешнийХэш" Type="String" Nullable="true" />
           <NavigationProperty Name="Пользователь" Relationship="HakatonModel.ПользовательВодитель" FromRole="Водитель" ToRole="Пользователь" />
           <NavigationProperty Name="МедосмотрАвтоматический" Relationship="HakatonModel.ВодительМедосмотрАвтоматический" FromRole="Водитель" ToRole="МедосмотрАвтоматический" />
           <NavigationProperty Name="МедосмотрСВрачом" Relationship="HakatonModel.ВодительМедосмотрСВрачом" FromRole="Водитель" ToRole="МедосмотрСВрачом" />
@@ -237,6 +239,7 @@
           <Property Name="ОпьянениеПромилле" Type="Decimal" Nullable="false" />
           <Property Name="Заключение" Type="HakatonModel.Заключение" Nullable="false" />
           <Property Name="Комментарий" Type="String" Nullable="false" />
+          <Property Name="ВнешнийХэш" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="МедосмотрАвтоматический">
           <Key>
@@ -251,6 +254,7 @@
           <Property Name="Пульс" Type="Int32" Nullable="true" />
           <Property Name="ОпьянениеПромилле" Type="Decimal" Nullable="true" />
           <Property Name="Заключение" Type="HakatonModel.Заключение" Nullable="false" />
+          <Property Name="ВнешнийХэш" Type="String" Nullable="true" />
         </EntityType>
         <Association Name="ПользовательВрач">
           <End Type="HakatonModel.Пользователь" Role="Пользователь" Multiplicity="1" />
@@ -308,6 +312,7 @@
           <ScalarProperty Name="ОпьянениеПромилле" ColumnName="ОпьянениеПромилле" />
           <ScalarProperty Name="Заключение" ColumnName="Заключение" />
           <ScalarProperty Name="Комментарий" ColumnName="Комментарий" />
+          <ScalarProperty Name="ВнешнийХэш" ColumnName="ВнешнийХэш" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -322,6 +327,7 @@
           <ScalarProperty Name="Пульс" ColumnName="Пульс" />
           <ScalarProperty Name="ОпьянениеПромилле" ColumnName="ОпьянениеПромилле" />
           <ScalarProperty Name="Заключение" ColumnName="Заключение" />
+          <ScalarProperty Name="ВнешнийХэш" ColumnName="ВнешнийХэш" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -22,6 +22,7 @@ namespace ImmortalVentureService.Model
         public Nullable<int> Пульс { get; set; }
         public Nullable<decimal> ОпьянениеПромилле { get; set; }
         public Заключение Заключение { get; set; }
+        public string ВнешнийХэш { get; set; }
     
         public virtual Водитель Водитель { get; set; }
     }

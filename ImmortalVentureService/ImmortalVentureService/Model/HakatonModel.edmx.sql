@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/15/2019 15:29:06
+-- Date Created: 06/15/2019 16:31:46
 -- Generated from EDMX file: D:\PROJECTS\CSharp\ImmortalVenture\ImmortalVentureService\ImmortalVentureService\Model\HakatonModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,41 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_ПользовательВрач]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ВрачSet] DROP CONSTRAINT [FK_ПользовательВрач];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ПользовательВодитель]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ВодительSet] DROP CONSTRAINT [FK_ПользовательВодитель];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ВодительМедосмотрАвтоматический]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[МедосмотрАвтоматическийSet] DROP CONSTRAINT [FK_ВодительМедосмотрАвтоматический];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ВодительМедосмотрСВрачом]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[МедосмотрСВрачомSet] DROP CONSTRAINT [FK_ВодительМедосмотрСВрачом];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ВрачМедосмотрСВрачом]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[МедосмотрСВрачомSet] DROP CONSTRAINT [FK_ВрачМедосмотрСВрачом];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[ПользовательSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ПользовательSet];
+GO
+IF OBJECT_ID(N'[dbo].[МедосмотрСВрачомSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[МедосмотрСВрачомSet];
+GO
+IF OBJECT_ID(N'[dbo].[МедосмотрАвтоматическийSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[МедосмотрАвтоматическийSet];
+GO
+IF OBJECT_ID(N'[dbo].[ВодительSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ВодительSet];
+GO
+IF OBJECT_ID(N'[dbo].[ВрачSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ВрачSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -50,6 +80,7 @@ CREATE TABLE [dbo].[МедосмотрСВрачомSet] (
     [ОпьянениеПромилле] decimal(18,0)  NOT NULL,
     [Заключение] int  NOT NULL,
     [Комментарий] nvarchar(max)  NOT NULL,
+    [ВнешнийХэш] nvarchar(max)  NULL,
     [Водитель_Id] int  NOT NULL,
     [Врач_Id] int  NOT NULL
 );
@@ -65,6 +96,7 @@ CREATE TABLE [dbo].[МедосмотрАвтоматическийSet] (
     [Пульс] int  NULL,
     [ОпьянениеПромилле] decimal(18,0)  NULL,
     [Заключение] int  NOT NULL,
+    [ВнешнийХэш] nvarchar(max)  NULL,
     [Водитель_Id] int  NOT NULL
 );
 GO
@@ -74,7 +106,7 @@ CREATE TABLE [dbo].[ВодительSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [ДатаРождения] datetime  NOT NULL,
     [Пол] int  NOT NULL,
-    [ВнешнийХэш] nvarchar(max)  NOT NULL,
+    [ВнешнийХэш] nvarchar(max)  NULL,
     [Пользователь_Id] int  NOT NULL
 );
 GO
@@ -82,7 +114,7 @@ GO
 -- Creating table 'ВрачSet'
 CREATE TABLE [dbo].[ВрачSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [ВнешнийХэш] nvarchar(max)  NOT NULL,
+    [ВнешнийХэш] nvarchar(max)  NULL,
     [Пользователь_Id] int  NOT NULL
 );
 GO
