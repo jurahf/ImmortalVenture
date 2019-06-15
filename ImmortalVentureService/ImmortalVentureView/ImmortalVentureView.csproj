@@ -181,6 +181,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\MedicalView.cshtml" />
+    <Content Include="Views\Home\SuperviserDoctor.cshtml" />
+    <Content Include="Views\Home\SuperviserDriver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

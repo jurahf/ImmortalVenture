@@ -17,5 +17,15 @@ namespace ImmortalVentureView.Controllers
         {
             return View();
         }
+
+        public ActionResult SuperviserDoctor()
+        {
+            return View();
+        }
+
+        public ActionResult SuperviserDriver()
+        {
+            return View();
+        }
     }
 }
