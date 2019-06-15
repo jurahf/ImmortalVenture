@@ -1,145 +1,51 @@
 ﻿@{
     ViewBag.Title = "Домашняя страница";
 }
-
 <div class="jumbotron">
-    <h2>Медосмотр</h2>
 
-    <div class="container">
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Вид медосмотра</h3>
-            </div>
+    <div class="row">
+        <div class="col col-xs-4">
+            <img class="icons" src="~/Images/icon_doctor.jpg" />
         </div>
 
-        <div class="row">
-            <div class="col col-xs-12">
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="pred" name="defaultExampleRadios">
-                    <label class="custom-control-label" for="pred">Предрейсовый</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="post" name="defaultExampleRadios">
-                    <label class="custom-control-label" for="post">Послерейсовый</label>
-                </div>
-            </div>
+        <div class="col col-xs-4">
+            <img class="icons" src="~/Images/icon_driver.jpg" />
         </div>
 
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Фамилия</h3>
-            </div>
-            <div class="col col-xs-1"></div>
-            <div class="col col-xs-6">
-                <input type="text" class="form-control" id="tb_fam" />
-            </div>
-            <div class="col col-xs-5"></div>
+        <div class="col col-xs-4">
+            <img class="icons" src="~/Images/icon_mechanic.jpg" />
         </div>
-
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Имя</h3>
-            </div>
-            <div class="col col-xs-1"></div>
-            <div class="col col-xs-6">
-                <input type="text" class="form-control" id="tb_name" />
-            </div>
-            <div class="col col-xs-5"></div>
-        </div>
-
-
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Отчество</h3>
-            </div>
-            <div class="col col-xs-1"></div>
-            <div class="col col-xs-6">
-                <input type="text" class="form-control" id="tb_otch" />
-            </div>
-            <div class="col col-xs-5"></div>
-        </div>
-
-
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Пол</h3>
-            </div>
-            <div class="col col-xs-1"></div>
-            <div class="col col-xs-6">
-                <select class="form-control" id="cb_gender">
-                    <option>М</option>
-                    <option>Ж</option>
-                </select>
-            </div>
-            <div class="col col-xs-5"></div>
-        </div>
-
-
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Жалобы</h3>
-            </div>
-            <div class="col col-xs-1"></div>
-            <div class="col col-xs-6">
-                <textarea class="form-control" id="tb_beda" rows="3"></textarea>
-            </div>
-            <div class="col col-xs-5"></div>
-        </div>
-
-
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Проверка на алкогольное опьянение</h3>
-            </div>
-            <div class="col col-xs-1"></div>
-            <div class="col col-xs-6">
-                <input type="text" class="form-control" id="tb_alco" value="0.00" /> промилле
-            </div>
-            <div class="col col-xs-5"></div>
-        </div>
-
-
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Результат исследования</h3>
-            </div>
-            <div class="col col-xs-1"></div>
-            <div class="col col-xs-6">
-                <select class="form-control" id="cb_result">
-                    <option>Допущен к управлению ТС</option>
-                    <option>Не допущен к управлению ТС</option>
-                </select>
-            </div>
-            <div class="col col-xs-5"></div>
-        </div>
-
-
-        <div class="row">
-            <div class="col col-xs-12">
-                <h3>Подпись врача</h3>
-            </div>
-            <div class="col col-xs-1"></div>
-            <div class="col col-xs-6">
-                <input type="text" class="form-control" id="tb_doctor" value="Айболит Петр Петрович" />
-            </div>
-            <div class="col col-xs-5"></div>
-        </div>
-
-        <div class="row">
-            <div class="col col-xs-12">&nbsp;</div>
-        </div>
-
-        <div class="row">
-            <div class="col col-xs-3"></div>
-            <div class="col col-xs-6">
-                <button type="button" class="btn btn-success" id="btn_done">Закончить медосмотр</button>
-            </div>
-            <div class="col col-xs-3"></div>
-        </div>
-
-
-
-
     </div>
+
+
+    <div class="row width-padding-40">
+        <div class="col col-xs-4">
+            <button type="button" class="btn btn-success" onclick="document.location.href = 'MedicalView';">Я врач</button>
+        </div>
+
+        <div class="col col-xs-4">
+            <button type="button" class="btn btn-success">Я водитель</button>
+        </div>
+
+        <div class="col col-xs-4">
+            <button type="button" class="btn btn-success">Я механик</button>
+        </div>
+    </div>
+
+
+    <div class="row width-padding-40">
+        <div class="col col-xs-4">
+            <p>Зарегистрируйтесь на портале и получайте больше заказов на прохождение предрейсовых медосмотров от водителей.</p>
+        </div>
+
+        <div class="col col-xs-4">
+            <p>Проверяйте состояние здоровья и контролируйте состояние траспортного средства для снижения аварийности.</p>
+        </div>
+
+        <div class="col col-xs-4">
+            <p>Ведите свою собственную электронную запись и получайте больше заказов на проведение ТО.</p>
+        </div>
+    </div>
+
 
 </div>
