@@ -44,7 +44,10 @@ namespace ЭС
                     tempFile = saveFileDialog1.FileName;
                     if (File.Exists(tempFile))
                         File.Delete(tempFile);
-                    File.Create(tempFile);
+                    using (FileStream fs = File.Create(tempFile))
+                    {
+                    }
+
                     StartES();
                     saved = true;
                 }

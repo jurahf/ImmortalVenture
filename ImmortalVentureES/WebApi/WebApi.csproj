@@ -104,6 +104,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ActualESFiles\MedicalView.es">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\ImmortalVentureES - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
@@ -113,9 +116,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\ActualESFiles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Classes\Classes.csproj">
       <Project>{AE10F6B6-F933-4191-B68F-BE6487C5D04C}</Project>
