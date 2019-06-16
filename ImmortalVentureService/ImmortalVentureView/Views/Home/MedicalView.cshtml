@@ -3,7 +3,9 @@
     ViewBag.Title = "Медосмотр";
 }
 
-
+@section superbutton {
+    <a href="/Home/SuperviserDoctor">Супервизор</a>
+}
 
 <div class="jumbotron">
     <h2>Медосмотр</h2>
@@ -131,7 +133,7 @@
         <div class="row">
             <div class="col col-xs-3"></div>
             <div class="col col-xs-6">
-                <button type="button" class="btn btn-success" id="btn_done">Закончить медосмотр</button>
+                <a type="button" class="btn btn-success" id="btn_done" href="/Home/Index" onclick="alert('Данные сохранены');">Закончить медосмотр</a>
             </div>
             <div class="col col-xs-3"></div>
         </div>

@@ -28,10 +28,11 @@
 
                     </div>
 
+
                     <div class="col col-xs-5 center-content font-size-30 left">
-                        <a>Профиль</a>
+                        @RenderSection("superbutton", required: false)
                         <a>Расписание</a>
-                        <a class="white-border">Выход</a>
+                        <a class="white-border" href="/Home/Index">Выход</a>
                     </div>
                 </div>
 

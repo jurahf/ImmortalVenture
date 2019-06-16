@@ -3,7 +3,9 @@
     ViewBag.Title = "Водитель";
 }
 
-
+@section superbutton {
+    <a href="/Home/SuperviserDriver">Диспетчер</a>
+}
 
 <div class="jumbotron">
     <h2>Водитель</h2>
@@ -74,34 +76,75 @@
 
 @section scripts {
 
-<script>
+    <script>
 
-    $(document).ready(function () {
-        window.setTimeout(Demonstration1, 5 * 1000);
-    });
+        $(document).ready(function () {
+            window.setTimeout(Demonstration1, 5 * 1000);
+        });
 
-    function Demonstration1() {
-        $('#lamp_pressure').removeClass('circle-green');
-        $('#lamp_pressure').addClass('circle-yellow');
+        function CheckToEs(data) {
+            // отправляем на сервер - делаем запрос к ЭС (с данными как бы из датчиков)
+            var json = JSON.stringify(data);
 
-        window.setTimeout(Demonstration2, 2 * 1000);
-    }
+            // todo: адрес из конфига
+            var xmlHttp = new XMLHttpRequest(); // вообще-то json
+            xmlHttp.open("POST", "http://immortalventureservice.azurewebsites.net/api/AskEs/AdaptValues", true); // false for synchronous request
+            xmlHttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            xmlHttp.onload = function () {
+                var response = JSON.parse(xmlHttp.responseText);
 
-    function Demonstration2() {
-        $('#lamp_pulse').removeClass('circle-green');
-        $('#lamp_pulse').addClass('circle-yellow');
+                if (response["Fact"]["Value"] === "Хорошо") {
+                    $('#lamp_pressure').removeClass('circle-yellow');
+                    $('#lamp_pressure').addClass('circle-green');
 
-        blink();
-        setInterval(blink, 600);
-    }
+                    $('#lamp_pulse').removeClass('circle-yellow');
+                    $('#lamp_pulse').addClass('circle-green');
+                }
+                else {
+                    $('#lamp_pressure').removeClass('circle-green');
+                    $('#lamp_pressure').addClass('circle-yellow');
 
-    function blink() {
-        if ($("#btn_test").hasClass('btn-err'))
-            $("#btn_test").removeClass('btn-err');
-        else
-            $("#btn_test").addClass('btn-err');
-    }
+                    $('#lamp_pulse').removeClass('circle-green');
+                    $('#lamp_pulse').addClass('circle-yellow');
 
-</script>
+                    blink();
+                    setInterval(blink, 600);
+                }
+            }
+            xmlHttp.onerror = function (err) {
+                //alert('err ' + err);
+            }
+
+            xmlHttp.send(json);
+        }
+
+        function Demonstration1() {
+            var data = {};
+            data.Temperature = "36.6";
+            data.PressureTop = "120";
+            data.Pulse = "60";
+
+            CheckToEs(data);
+
+            window.setTimeout(Demonstration2, 2 * 1000);
+        }
+
+        function Demonstration2() {
+            var data = {};
+            data.Temperature = "36.6";
+            data.PressureTop = "150";
+            data.Pulse = "90";
+
+            CheckToEs(data);
+        }
+
+        function blink() {
+            if ($("#btn_test").hasClass('btn-err'))
+                $("#btn_test").removeClass('btn-err');
+            else
+                $("#btn_test").addClass('btn-err');
+        }
+
+    </script>
 
 }

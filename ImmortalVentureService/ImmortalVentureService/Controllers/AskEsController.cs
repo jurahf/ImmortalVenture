@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Script.Serialization;
 
 namespace ImmortalVentureService.Controllers
@@ -15,6 +16,7 @@ namespace ImmortalVentureService.Controllers
     {
         [HttpPost]
         [ActionName("AdaptValues")]
+        [EnableCors(origins: "http://localhost:10462,https://immortalventureview.azurewebsites.net", headers: "*", methods: "*")]
         public ConsultResultDto AdaptValues([FromBody] DataFromDevices devicesData)
         {
             EsParameters parameters = new EsParameters();
