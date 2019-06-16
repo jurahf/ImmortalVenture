@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Classes\HashHelper.cs" />
+    <Compile Include="Controllers\AskEsController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\MedicalViewController.cs" />

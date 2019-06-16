@@ -13,19 +13,21 @@
     <p>
         ExpertSystemController - для работы с экспертными системами
         <br /><a href="/api/expertSystem/getActualSystems">/api/expertSystem/getActualSystems</a> - получить список активных систем
-        <br /><a href="/api/expertSystem/getQueriedVariables?esName=Шашлык">/api/expertSystem/getQueriedVariables?esName=Шашлык</a> - получить список запрашиваемых переменных в определенной ЭС
+        <br /><a href="/api/expertSystem/getQueriedVariables?esName=MedicalView">/api/expertSystem/getQueriedVariables?esName=MedicalView</a> - получить список запрашиваемых переменных в определенной ЭС
         <br /><a href="/api/expertSystem/GoConsult">/api/expertSystem/GoConsult</a> - выполнить консультацию. POST-запросом, в теле запроса надо указать систему, цель консультации и значения запрашиваемых переменных.
         Пример:
-        <code>
-            {
-                FileName: "Шашлык.es",
-                Goal: "Действие",
-                VarValues: [
-                    { Variable: "Вид мяса", Value: "Свинина" },
-                    { Variable: "Время жарки", Value: "Ну минут 10" },
-                ]
-            }
-        </code>
+              <code>
+                  {
+                    FileName: "MedicalView.es",
+                    Goal: "Состояние",
+                    VarValues:
+                      [
+                          { Variable: "ТемператураЗначением", Value: "от36и5до37и1" },
+                          { Variable: "ПульсЗначением", Value: "от50до85" },
+                          { Variable: "ДавлениеЗначением", Value: "от140до150" }
+                      ]
+                  }
+              </code>
 
     </p>
 </body>

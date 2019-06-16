@@ -38,6 +38,11 @@ body {
     border-color: #26A69A;
 }
 
+.btn-err {
+    background-color: darkred !important;
+    border-color: darkred !important;
+}
+
 .btn-success-inverse {
     background-color: #FFFFFF;
     border-color: #26A69A;
