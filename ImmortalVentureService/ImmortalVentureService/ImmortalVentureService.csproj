@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Classes\EsDTOs.cs" />
     <Compile Include="Classes\HashHelper.cs" />
     <Compile Include="Controllers\AskEsController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using ImmortalVentureService.Classes;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace ImmortalVentureService.Controllers
 {
@@ -11,7 +15,7 @@ namespace ImmortalVentureService.Controllers
     {
         [HttpPost]
         [ActionName("AdaptValues")]
-        public object AdaptValues([FromBody] DataFromDevices devicesData)
+        public ConsultResultDto AdaptValues([FromBody] DataFromDevices devicesData)
         {
             EsParameters parameters = new EsParameters();
 
@@ -20,17 +24,43 @@ namespace ImmortalVentureService.Controllers
                 parameters.VarValues.Add(new EsVariables() { Variable = "ТемператураЗначением", Value = devicesData.GetTemperatureRange().ToString() });
             }
 
-            // TODO: преобразовать параметры
-            // TODO: отправить запрос в ЭС POST-запросом
+            if (devicesData.Pulse != null)
+            {
+                parameters.VarValues.Add(new EsVariables() { Variable = "ПульсЗначением", Value = devicesData.GetPulseRange().ToString() });
+            }
 
-            throw new NotImplementedException();
+            if (devicesData.PressureTop != null)
+            {
+                parameters.VarValues.Add(new EsVariables() { Variable = "ДавлениеЗначением", Value = devicesData.GetPressureRange().ToString() });
+            }
+
+            // отправляем POST-запрос в экспертную систему
+            ConsultResultDto result = null;
+            if (parameters.VarValues.Any())
+            {
+                string json = new JavaScriptSerializer().Serialize(parameters);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://immortalventurees.azurewebsites.net");
+
+                HttpResponseMessage response = client.PostAsync("/api/expertSystem/GoConsult", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    result = response.Content.ReadAsAsync<ConsultResultDto>().Result;
+                }
+            }
+
+            return result;
         }
+
+
 
     }
 
     public class EsParameters
     {
-        //{ FileName: "MedicalView.es", Goal: "Состояние", VarValues: [ { Variable: "ТемператураЗначением", Value: "от36и5до37и1" }, { Variable: "ПульсЗначением", Value: "от50до85" }, { Variable: "ДавлениеЗначением", Value: "от140до150" } ] }
         public string FileName => "MedicalView.es";
 
         public string Goal => "Состояние";
@@ -59,6 +89,30 @@ namespace ImmortalVentureService.Controllers
                 return TemperatureRange.больше37и1;
             else
                 return TemperatureRange.от36и5до37и1;
+        }
+
+        public PressureTopRange GetPressureRange()
+        {
+            if (PressureTop < 100)
+                return PressureTopRange.меньше100;
+            else if (PressureTop < 140)
+                return PressureTopRange.от100до140;
+            else if (PressureTop < 150)
+                return PressureTopRange.от140до150;
+            else
+                return PressureTopRange.больше150;
+        }
+
+        public PulseRange GetPulseRange()
+        {
+            if (Pulse < 50)
+                return PulseRange.меньше50;
+            else if (Pulse < 85)
+                return PulseRange.от50до85;
+            else if (Pulse < 95)
+                return PulseRange.от85до95;
+            else
+                return PulseRange.больше95;
         }
     }
 
