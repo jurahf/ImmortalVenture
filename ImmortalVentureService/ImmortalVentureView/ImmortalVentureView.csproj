@@ -183,6 +183,7 @@
     <Content Include="Views\Home\SuperviserDriver.cshtml" />
     <Content Include="Views\Home\Driver.cshtml" />
     <Content Include="Views\Home\Testing.cshtml" />
+    <Content Include="Views\Home\Maps.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

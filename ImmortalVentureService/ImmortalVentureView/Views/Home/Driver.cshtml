@@ -5,6 +5,7 @@
 
 @section superbutton {
     <a href="/Home/SuperviserDriver">Диспетчер</a>
+    <a href="/Home/Maps">Маршруты</a>
 }
 
 <div class="jumbotron">
@@ -24,7 +25,7 @@
 
         <div class="row">
             <div class="col col-xs-4">
-                <a type="button" class="btn btn-success" href="#">Обратиться к врачу</a>
+                <a type="button" class="btn btn-success" href="skype:030303030303">Обратиться к врачу</a>
             </div>
             <div class="col col-xs-8">
                 <p>Если Вы почувствовали недомогание, свяжитесь с дежурным врачом.</p>
@@ -88,7 +89,7 @@
 
             // todo: адрес из конфига
             var xmlHttp = new XMLHttpRequest(); // вообще-то json
-            xmlHttp.open("POST", "http://immortalventureservice.azurewebsites.net/api/AskEs/AdaptValues", true); // false for synchronous request
+            xmlHttp.open("POST", "https://immortalventureservice.azurewebsites.net/api/AskEs/AdaptValues", true); // false for synchronous request
             xmlHttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xmlHttp.onload = function () {
                 var response = JSON.parse(xmlHttp.responseText);

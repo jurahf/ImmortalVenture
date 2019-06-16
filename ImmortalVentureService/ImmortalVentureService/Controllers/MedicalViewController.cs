@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ImmortalVentureService.Controllers
 {
+    [EnableCors(origins: "http://localhost:10462,https://immortalventureview.azurewebsites.net", headers: "*", methods: "*")]
     public class MedicalViewController : ApiController
     {
         DBWork db = new DBWork();

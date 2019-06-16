@@ -37,5 +37,10 @@ namespace ImmortalVentureView.Controllers
         {
             return View();
         }
+
+        public ActionResult Maps()
+        {
+            return View();
+        }
     }
 }

@@ -1031,10 +1031,16 @@
         }
 
         function setposX(divname, xpos) {
+            if (xpos > 500)
+                return;
+
             $('#' + divname).css({ left: xpos });
         }
 
         function setposY(divname, ypos) {
+            if (ypos < 10)
+                return;
+
             if (divname === 'enemy3')
                 console.trace('curr=' + $('#box').css('top') + ' new=' + ypos);
 
